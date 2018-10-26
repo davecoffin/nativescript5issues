@@ -1,0 +1,49 @@
+<!--
+The template defines the view of the component - what is actually rendered.
+In NativeScript applications the template is defined with XML using NativeScript UI elements.
+It is different from HTML. So instead of <input>, <span>, <div> etc. - we have <TextField>, <Label> and layouts.
+The important thing is that although the elements are different - all of the Angular’s template syntax works exactly the same.
+So you can still use template expressions, bindings, templates as well as all the built-in directives.
+-->
+
+<!--
+The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
+http://docs.nativescript.org/ui/action-bar
+-->
+<!-- <ActionBar title="My App" class="action-bar">
+</ActionBar> -->
+
+<!--
+The StackLayout stacks UI components on the screen — either vertically or horizontally.
+In this case, the StackLayout does vertical stacking; you can change the stacking to
+horizontal by applying a orientation="horizontal" attribute to the <StackLayout> element.
+You can learn more about NativeScript layouts at https://docs.nativescript.org/ui/layout-containers.
+
+These components make use of several CSS class names that are part of the NativeScript
+core theme, such as p-20, btn, h2, and list-group. You can view a full list of the
+class names available for styling your app at https://docs.nativescript.org/ui/theme.
+-->
+<GridLayout class="page">
+  <Image src="https://cdn.mos.cms.futurecdn.net/FUE7XiFApEqWZQ85wYcAfM.jpg" iosOverflowSafeArea="true" stretch="aspectFill"></Image>
+  <StackLayout backgroundColor="rgba(0,0,0,0.8)">
+    <ListView [items]="items" class="list-group" style="background-color: transparent;" [itemTemplateSelector]="articleTemplateSelector" separatorColor="transparent">
+        <ng-template let-item="item" nsTemplateKey="item" style="background-color: transparent">
+            <GridLayout columns="*, 40" rows="auto, 1" style="padding: 10 15;" (tap)="go(item)">
+                <StackLayout>
+                    <Label [text]="item.name" textWrap="true" style="color: white;"></Label>
+                    <Label class="sm" [text]="'Created on ' + item.time" style="color: rgb(177, 177, 177);"></Label>
+                </StackLayout>
+                <Label class="fa" text="&#xf054;" col="1" horizontalAlignment="right" style="color: #0088cc;"></Label>
+                <StackLayout class="listborder_light" row="1" style="margin-top: 30;"></StackLayout>
+            </GridLayout>
+        </ng-template>
+        <ng-template let-item="item" nsTemplateKey="footer">
+            <StackLayout style="padding: 10 15;">
+                <Label textWrap="true" text="Didn't find what you're looking for?" style="text-align: center; color: white; font-size: 15; margin: 20 0 10 0; font-weight: bold;"></Label>
+                <Button class="addBtn" text="Contact Support" (tap)="showCreateTicket()" style="margin-bottom: 50;"></Button>
+            </StackLayout>
+        </ng-template>
+      </ListView>
+    </StackLayout>
+    <StackLayout height="0" verticalAlignment="top" backgroundColor="blue"></StackLayout>
+</GridLayout>

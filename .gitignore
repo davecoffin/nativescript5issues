@@ -1,0 +1,9 @@
+hooks
+node_modules
+platforms
+typings
+*.js
+*.js.map
+*.log
+npm
+.nsbuildinfo
